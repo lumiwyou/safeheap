@@ -38,10 +38,6 @@ void remove_secure_object(SecureHandle secure_handle) {
             SecureObjectContext * object = secured_objects_table[o];
             SecureObjectScheme * scheme = get_scheme_by_identifier(object->scheme_id);
             for(int m = 0; m < object->memory_unit_count; m++) {
-                // Wipe if enabled
-                if(scheme->data_wiping.enabled) {
-                    wipe_data(object->memory_units[m]->address);
-                }
                 free(object->memory_units[m]->address);
             }
             free(object->memory_units);
