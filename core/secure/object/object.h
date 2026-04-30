@@ -12,8 +12,8 @@
  */
 
 #pragma once
-#include "../secure/secure.h"
-#include "../memory/memory.h"
+#include "../secure.h"
+#include "../../memory/memory.h"
 
 typedef struct {
     SecureHandle secure_handle;
