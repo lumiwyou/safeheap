@@ -22,4 +22,4 @@ typedef struct {
 
 #include "../secure/object/object.h"
 
-void add_memory_unit(SecureHandle secure_handle, unsigned char * address, size_t size);
+void add_memory_unit(SecureHandle secure_handle, void * address, size_t size);
