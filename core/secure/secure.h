@@ -13,13 +13,15 @@
 
 #pragma once
 #include <stdbool.h>
+#include <stdlib.h>
 
 typedef void * SecureHandle;
 
 typedef enum {
     CRITICAL,
     INTERNAL,
-    PUBLIC
+    PUBLIC,
+    _DEFAULT
 } Sensitivity;
 
 typedef enum {
@@ -57,7 +59,7 @@ typedef struct
     DataWipingScheme data_wiping;
 } SecureObjectScheme;
 
-extern SecureObjectScheme available_schemes;
+extern SecureObjectScheme available_schemes[];
 
 SecureObjectScheme * get_scheme_by_identifier(SchemeIdentifier identifier);
-SchemeIdentifier get_scheme_by_grade(Sensitivity grade, size_t size);
+SecureObjectScheme * get_scheme_by_grade(Sensitivity grade, size_t size);
