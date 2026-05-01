@@ -27,7 +27,7 @@ SecureObjectScheme * get_scheme_by_identifier(SchemeIdentifier id) {
     }
 }
 
-SchemeIdentifier get_scheme_by_grade(grade, size) {
+SecureObjectScheme * get_scheme_by_grade(Sensitivity grade, size_t size) {
     for(int s = 0; s < (sizeof(available_schemes) / sizeof(SecureObjectScheme)); s++) {
         if(grade == available_schemes[s].sensitivity) {
             return &available_schemes[s];
