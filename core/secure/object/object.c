@@ -51,13 +51,14 @@ void update_secure_object(SecureHandle secure_handle, Sensitivity grade, size_t 
     
     if(grade != NULL) {
         SecureObjectScheme * new_scheme;
-        if((new_scheme = get_scheme_by_grade(grade))->id != secure_context->scheme_id) {
+        if((new_scheme = get_scheme_by_grade(grade, size))->id != secure_context->scheme_id) {
             secure_context->scheme_id = new_scheme->id;
             // TODO: Update entire memory units
             // ! ISSUE: this duty is reserved for interface function, conflicting.
             for(int m = 0; m < secure_context->memory_unit_count; m++) {
                 // Re-fragment
                 // Re-encrypt
+                printf("%d", m);
             }
         }
     }
