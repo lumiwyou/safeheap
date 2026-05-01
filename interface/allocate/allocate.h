@@ -13,8 +13,8 @@
  */
 
 #pragma once
-#include "../core/secure/object/object.h"
-#include "../core/secure/wiping/wiping.h"
+#include "../../core/secure/object/object.h"
+#include "../../core/secure/wiping/wiping.h"
 
 SecureHandle sfp_malloc(size_t size, Sensitivity grade);
 SecureHandle sfp_calloc(int num, size_t size, Sensitivity grade);
