@@ -60,4 +60,4 @@ typedef struct
 extern SecureObjectScheme available_schemes;
 
 SecureObjectScheme * get_scheme_by_identifier(SchemeIdentifier identifier);
-SchemeIdentifier get_scheme_by_grade(grade, size);
+SchemeIdentifier get_scheme_by_grade(Sensitivity grade, size_t size);
