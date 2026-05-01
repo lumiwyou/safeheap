@@ -1,5 +1,4 @@
 #include "allocate.h"
-#include "../core/secure/fragmentation/fragmentation.h"
 
 SecureHandle sfp_malloc(size_t size, Sensitivity grade) {
     SecureHandle secure_handle = add_secure_object(grade, size);
@@ -56,7 +55,7 @@ SecureHandle sfp_calloc(int num, size_t size, Sensitivity grade) {
 }
 
 SecureHandle sfp_realloc(SecureHandle secure_handle, size_t size) {
-    update_secure_object(secure_handle, NULL, size);
+    update_secure_object(secure_handle, _DEFAULT, size);
 }
 
 void sfp_free(SecureHandle secure_handle) {
