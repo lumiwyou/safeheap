@@ -9,8 +9,8 @@ void add_memory_unit(SecureHandle secure_handle, void * address, size_t size) {
     
     MemoryUnit ** buffer;
     if((buffer = realloc(secure_context->memory_units, sizeof(MemoryUnit*) * secure_context->memory_unit_count++)) == NULL) {
-        return NULL;
+        return;
     }
-    secure_context->memory_unit_count = buffer;
+    secure_context->memory_units = buffer;
     secure_context->memory_units[secure_context->memory_unit_count] = new_unit;
 }
