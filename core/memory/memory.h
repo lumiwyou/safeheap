@@ -14,11 +14,12 @@
 
 #pragma once
 #include <stdlib.h>
-#include "../secure/object/object.h"
 
 typedef struct {
     unsigned char * address;
     size_t length;
 } MemoryUnit;
+
+#include "../secure/object/object.h"
 
 void add_memory_unit(SecureHandle secure_handle, unsigned char * address, size_t size);
