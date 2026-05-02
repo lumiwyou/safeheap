@@ -12,21 +12,20 @@ SecureObjectContext * get_secure_object(SecureHandle secure_handle) {
 }
 
 SecureHandle create_secure_object(Sensitivity grade, size_t size) {
-    SecureObjectContext ** available_spot;
-    SecureObjectContext ** buffer;
     SecureObjectContext * new_context = malloc(sizeof(SecureObjectContext));
-    new_context->data_total_size = size;
-    new_context->secure_handle = malloc(new_context->data_total_size);
+    
     new_context->scheme = get_scheme_by_grade(grade);
-
-    // If there is a NULLED entry (from previous removal) then use that instead of creating a new one in table
-    if((available_spot = find_empty_context()) != NULL) {
-        *available_spot = new_context;
+    new_context->data_total_size = size;
+    new_context->secure_handle = malloc(size);
+    
+    SecureObjectContext ** available;
+    if((available = find_empty_context()) != NULL) {
+        *available = new_context;
     }else{
-        if((buffer = realloc(secured_objects_table, sizeof(SecureObjectContext) * secured_objects_count++)) == NULL) {
-            return NULL;
+        SecureObjectContext ** buffer;
+        if((buffer = realloc(secured_objects_table, sizeof(SecureObjectContext*) * secured_objects_count++)) != NULL) {
+            secured_objects_table = buffer;
         }
-        secured_objects_table = buffer;
         secured_objects_table[secured_objects_count] = new_context;
     }
     return new_context->secure_handle;
