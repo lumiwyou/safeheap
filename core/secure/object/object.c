@@ -1,7 +1,7 @@
 #include "object.h"
 
 SecureObjectContext ** secured_objects_table;
-secured_objects_count = 0;
+int secured_objects_count = 0;
 
 SecureObjectContext * get_context_by_handle(SecureHandle secure_handle) {
     for(int a = 0; a < secured_objects_count; a++) {
@@ -17,11 +17,11 @@ SecureHandle add_secure_object(Sensitivity grade, size_t size) {
     SecureObjectContext * new_context = malloc(sizeof(SecureObjectContext));
     new_context->data_total_size = size;
     new_context->secure_handle = malloc(new_context->data_total_size);
-    new_context->scheme_id = get_scheme_by_grade(grade, size);
+    new_context->scheme_id = get_scheme_by_grade(grade, size)->id;
 
     // If there is a NULLED entry (from previous removal) then use that instead of creating a new one in table
     if((available_spot = find_empty_context()) != NULL) {
-        available_spot = new_context;
+        *available_spot = new_context;
     }else{
         if((buffer = realloc(secured_objects_table, sizeof(SecureObjectContext) * secured_objects_count++)) == NULL) {
             return NULL;
@@ -49,7 +49,7 @@ void remove_secure_object(SecureHandle secure_handle) {
 void update_secure_object(SecureHandle secure_handle, Sensitivity grade, size_t size) {
     SecureObjectContext * secure_context = get_context_by_handle(secure_handle);
     
-    if(grade != NULL) {
+    if(grade != _DEFAULT) {
         SecureObjectScheme * new_scheme;
         if((new_scheme = get_scheme_by_grade(grade, size))->id != secure_context->scheme_id) {
             secure_context->scheme_id = new_scheme->id;
@@ -58,8 +58,16 @@ void update_secure_object(SecureHandle secure_handle, Sensitivity grade, size_t 
             for(int m = 0; m < secure_context->memory_unit_count; m++) {
                 // Re-fragment
                 // Re-encrypt
-                printf("%d", m);
+                continue; // TODO: make it do stuff
             }
+        }
+    }
+}
+
+SecureObjectContext ** find_empty_context(void) {
+    for(int c = 0; c < secured_objects_count; c++) {
+        if(secured_objects_table[c] == NULL) {
+            return &secured_objects_table[c];
         }
     }
 }
