@@ -64,7 +64,6 @@ The information flow goes both ways for both read/write operations. `The User Da
 
 ### Sensitivity
 
-
 ### Secure Object / Secure Object Context
 When a user variable is delegated for protection by the library, a secure object is created containing the context for the security operation surrounding that variable. It contains the memory addressing, the sensitivity of the data, and the securiy schemes used to protect this sensitivity.
 
