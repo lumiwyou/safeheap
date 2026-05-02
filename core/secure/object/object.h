@@ -20,7 +20,7 @@
 typedef struct {
     SecureHandle secure_handle;
     size_t data_total_size;
-    SchemeIdentifier scheme_id;
+    SecureObjectScheme * scheme;;
     MemoryUnit ** memory_units;
     int memory_unit_count;
 } SecureObjectContext;

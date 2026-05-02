@@ -26,11 +26,6 @@ typedef enum {
     _DEFAULT
 } Sensitivity;
 
-/// @brief Identifier labels for each scheme (in the case of more than one scheme for each sensitivity class)
-typedef enum {
-    TEST
-} SchemeIdentifier;
-
 /// @brief Security sub-scheme for encrypting memory objects.
 typedef struct {
     bool enabled;
@@ -61,7 +56,6 @@ typedef struct {
 /// Contains sub-schemes such as encryption, fragmentation, noising, data wiping, etc.
 typedef struct
 {
-    SchemeIdentifier id;
     Sensitivity sensitivity;
     EncryptionScheme encryption;
     FragmentationScheme fragmentation;
@@ -71,11 +65,6 @@ typedef struct
 
 /// @brief A list of the available schemes to use
 extern SecureObjectScheme available_schemes[];
-
-/// @brief Retrieves security scheme by identifier attribute
-/// @param identifier Identifier to match against
-/// @return Security scheme pointer
-SecureObjectScheme * get_scheme_by_identifier(SchemeIdentifier identifier);
 
 /// @brief Retrieves security scheme by grade attribute
 /// @param grade Grade to match against
