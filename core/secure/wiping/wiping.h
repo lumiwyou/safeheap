@@ -16,4 +16,8 @@
 #include <string.h>
 #include "../secure.h"
 
-void overwrite_data(void * address, size_t length);
+/// @brief Overwrites data using patterns and rounds according to grade
+/// @param address address to overwrite
+/// @param length length to overwrite
+/// @param grade (Optional) sensitivity specifier to overwrite original object sensitivity
+void overwrite_data(void * address, size_t length, Sensitivity grade);
