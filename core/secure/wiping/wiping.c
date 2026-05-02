@@ -5,7 +5,7 @@ void overwrite_data(void * address, size_t length, Sensitivity grade) {
     for(int r = 0; r < scheme->data_wiping.rounds; r++) {
         for(int b = 0; b < length; b++) {
             for(int p = 0; p < scheme->data_wiping.length; p++) {
-                memcpy(&address[b], scheme->data_wiping.pattern[p], 1);
+                memcpy((char*)&address[b], &scheme->data_wiping.pattern[p], 1);
             }
         }
     }
