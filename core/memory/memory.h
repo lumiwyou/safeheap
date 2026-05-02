@@ -22,4 +22,8 @@ typedef struct {
 
 #include "../secure/object/object.h"
 
+/// @brief Adds a new memory unit to the SecureObjectContext by SecureHandle and Address
+/// @param secure_handle The handle used to find the context
+/// @param address The address of the memory unit
+/// @param size The size of the memory unit
 void add_memory_unit(SecureHandle secure_handle, void * address, size_t size);

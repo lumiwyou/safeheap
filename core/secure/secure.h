@@ -15,8 +15,10 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+/// @brief The bridging handle between the user-space and the library internals.
 typedef void * SecureHandle;
 
+/// @brief A label that determines how sensitive the memory object is to unauthorized information disclosure.
 typedef enum {
     CRITICAL,
     INTERNAL,
@@ -24,24 +26,30 @@ typedef enum {
     _DEFAULT
 } Sensitivity;
 
+/// @brief Identifier labels for each scheme (in the case of more than one scheme for each sensitivity class)
 typedef enum {
     TEST
 } SchemeIdentifier;
 
+/// @brief Security sub-scheme for encrypting memory objects.
 typedef struct {
     bool enabled;
     int size_incremental_difference;
 } EncryptionScheme;
 
+/// @brief Security sub-scheme for fragmenting memory objects.
 typedef struct {
     bool enabled;
     int amount;
 } FragmentationScheme;
 
+/// @brief Security sub-scheme for generating "noise" during input/output operations.
+/// Mitigation against side-channel attacks.
 typedef struct {
     bool enabled;
 } NoisingScheme;
 
+/// @brief Security sub-scheme for wiping data.
 typedef struct {
     bool enabled;
     int rounds;
@@ -49,6 +57,8 @@ typedef struct {
     int length;
 } DataWipingScheme;
 
+/// @brief The security scheme for which to use for securing memory objects.
+/// Contains sub-schemes such as encryption, fragmentation, noising, data wiping, etc.
 typedef struct
 {
     SchemeIdentifier id;
@@ -59,7 +69,16 @@ typedef struct
     DataWipingScheme data_wiping;
 } SecureObjectScheme;
 
+/// @brief A list of the available schemes to use
 extern SecureObjectScheme available_schemes[];
 
+/// @brief Retrieves security scheme by identifier attribute
+/// @param identifier Identifier to match against
+/// @return Security scheme pointer
 SecureObjectScheme * get_scheme_by_identifier(SchemeIdentifier identifier);
+
+/// @brief Retrieves security scheme by grade attribute
+/// @param grade Grade to match against
+/// @param size (Optional) Size of the memory object
+/// @return Security scheme pointer
 SecureObjectScheme * get_scheme_by_grade(Sensitivity grade, size_t size);
