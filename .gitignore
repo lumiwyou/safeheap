@@ -56,5 +56,11 @@ dkms.conf
 
 # MacOS
 .DS_Store
-.devcontainer
 .vscode
+
+# Cmake
+CMakeFiles/
+build/*
+cmake_install.cmake
+CMakeCache.txt
+Makefile
