@@ -13,13 +13,13 @@ SecureHandle sfp_malloc(size_t size, Sensitivity grade) {
 
         // Allocate each fragment and add to memory unit list
         for(int f = 0; f < scheme->fragmentation.amount; f++) {
-            unsigned char * unit_address = malloc(result.each_size);
+            void * unit_address = malloc(result.each_size);
             add_memory_unit(secure_handle, unit_address, result.each_size);
         }
 
         // Add eventual remainder
         if(result.remainder_size > 0) {
-            unsigned char * unit_address = malloc(result.remainder_size);
+            void * unit_address = malloc(result.remainder_size);
             add_memory_unit(secure_handle, unit_address, result.remainder_size);
         }   
     }
