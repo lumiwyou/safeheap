@@ -3,6 +3,7 @@
 ![Static Badge](https://img.shields.io/badge/License-GPL--3.0-yellow)
 ![Static Badge](https://img.shields.io/badge/Language-ISO/POSIX_C-blue)
 ![Static Badge](https://img.shields.io/badge/Status-Not--ready-red)
+[![build](https://github.com/lumiwyou/safeheap/actions/workflows/build.yml/badge.svg)](https://github.com/lumiwyou/safeheap/actions/workflows/build.yml)
 
 # Safeheap Revamped
 Safeheap is a library that mitigates risks against memory objects utilizing a variety of systems such as encryption (see Security Schemes).
