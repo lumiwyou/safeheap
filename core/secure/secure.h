@@ -17,10 +17,6 @@
 #include "encryption/encryption.h"
 #include "fragmentation/fragmentation.h"
 #include "noising/noising.h"
-#include "wiping/wiping.h"
-
-/// @brief The bridging handle between the user-space and the library internals.
-typedef void * SecureHandle;
 
 /// @brief A label that determines how sensitive the memory object is to unauthorized information disclosure.
 typedef enum {
@@ -29,6 +25,11 @@ typedef enum {
     PUBLIC,
     _DEFAULT
 } Sensitivity;
+
+#include "wiping/wiping.h"
+
+/// @brief The bridging handle between the user-space and the library internals.
+typedef void * SecureHandle;
 
 /// @brief The security scheme for which to use for securing memory objects.
 /// Contains sub-schemes such as encryption, fragmentation, noising, data wiping, etc.
