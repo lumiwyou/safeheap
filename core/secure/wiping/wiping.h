@@ -16,6 +16,14 @@
 #include <string.h>
 #include "../secure.h"
 
+/// @brief Security sub-scheme for wiping data.
+typedef struct {
+    bool enabled;
+    int rounds;
+    char * pattern;
+    int length;
+} DataWipingScheme;
+
 /// @brief Overwrites data using patterns and rounds according to grade
 /// @param address address to overwrite
 /// @param length length to overwrite
