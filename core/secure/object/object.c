@@ -3,7 +3,7 @@
 SecureObjectContext ** secured_objects_table;
 int secured_objects_count = 0;
 
-SecureObjectContext * get_context_by_handle(SecureHandle secure_handle) {
+SecureObjectContext * get_secure_object(SecureHandle secure_handle) {
     for(int a = 0; a < secured_objects_count; a++) {
         if(secured_objects_table[a]->secure_handle == secure_handle) {
             return secured_objects_table[a];
@@ -11,7 +11,7 @@ SecureObjectContext * get_context_by_handle(SecureHandle secure_handle) {
     }
 }
 
-SecureHandle add_secure_object(Sensitivity grade, size_t size) {
+SecureHandle create_secure_object(Sensitivity grade, size_t size) {
     SecureObjectContext ** available_spot;
     SecureObjectContext ** buffer;
     SecureObjectContext * new_context = malloc(sizeof(SecureObjectContext));
@@ -32,7 +32,7 @@ SecureHandle add_secure_object(Sensitivity grade, size_t size) {
     return new_context->secure_handle;
 }
 
-void remove_secure_object(SecureHandle secure_handle) {
+void delete_secure_object(SecureHandle secure_handle) {
     for(int o = 0; o < secured_objects_count; o++) {
         if(secured_objects_table[o]->secure_handle == secure_handle) {
             SecureObjectContext * context = secured_objects_table[o];

@@ -34,11 +34,11 @@ extern int secured_objects_count;
 /// @param grade The sensitivity attribute to give
 /// @param size The size of memory object to give
 /// @return Secure handle to new context
-SecureHandle add_secure_object(Sensitivity grade, size_t size);
+SecureHandle create_secure_object(Sensitivity grade, size_t size);
 
 /// @brief Removes SecureObjectContext by SecureHandle
 /// @param secure_handle The secure handle to match against
-void remove_secure_object(SecureHandle secure_handle);
+void delete_secure_object(SecureHandle secure_handle);
 
 /// @brief Updates information in the SecureObjectContext
 /// Used in reallocation operations.
@@ -50,7 +50,7 @@ void update_secure_object(SecureHandle secure_handle, Sensitivity grade, size_t 
 /// @brief Retrieves a SecureObjectContext by SecureHandle
 /// @param secure_handle The secure handle used for matching
 /// @return A pointer to the SecureObjectContext
-SecureObjectContext * get_context_by_handle(SecureHandle secure_handle);
+SecureObjectContext * get_secure_object(SecureHandle secure_handle);
 
 /// @brief Finds empty SecureObjectContext spots in the central table (secured_objects_table)
 /// @return A pointer to the context

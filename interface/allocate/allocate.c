@@ -1,8 +1,8 @@
 #include "allocate.h"
 
 SecureHandle sfp_malloc(size_t size, Sensitivity grade) {
-    SecureHandle secure_handle = add_secure_object(grade, size);
-    SecureObjectContext * context = get_context_by_handle(secure_handle);
+    SecureHandle secure_handle = create_secure_object(grade, size);
+    SecureObjectContext * context = get_secure_object(secure_handle);
     SecureObjectScheme * scheme = context->scheme;
 
     if(scheme->fragmentation.enabled) {
@@ -28,8 +28,8 @@ SecureHandle sfp_malloc(size_t size, Sensitivity grade) {
 }
 
 SecureHandle sfp_calloc(int num, size_t size, Sensitivity grade) {
-    SecureHandle secure_handle = add_secure_object(grade, num * size);
-    SecureObjectContext * context = get_context_by_handle(secure_handle);
+    SecureHandle secure_handle = create_secure_object(grade, num * size);
+    SecureObjectContext * context = get_secure_object(secure_handle);
     SecureObjectScheme * scheme = context->scheme;
 
     if(scheme->fragmentation.enabled) {
@@ -59,7 +59,7 @@ SecureHandle sfp_realloc(SecureHandle secure_handle, size_t size) {
 }
 
 void sfp_free(SecureHandle secure_handle) {
-    SecureObjectContext * context = get_context_by_handle(secure_handle);
+    SecureObjectContext * context = get_secure_object(secure_handle);
     SecureObjectScheme * scheme = context->scheme;
 
     if(scheme->data_wiping.enabled) {
@@ -75,5 +75,5 @@ void sfp_free(SecureHandle secure_handle) {
         free(unit);
     }
 
-    remove_secure_object(secure_handle);
+    delete_secure_object(secure_handle);
 }

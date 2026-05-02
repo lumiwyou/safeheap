@@ -1,7 +1,7 @@
 #include "memory.h"
 
 void add_memory_unit(SecureHandle secure_handle, void * address, size_t size) {
-    SecureObjectContext * secure_context = get_context_by_handle(secure_handle);
+    SecureObjectContext * secure_context = get_secure_object(secure_handle);
     MemoryUnit * new_unit = malloc(sizeof(MemoryUnit));
 
     new_unit->address = address;
