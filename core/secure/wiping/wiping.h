@@ -18,9 +18,13 @@
 
 /// @brief Security sub-scheme for wiping data.
 typedef struct {
+    /// @brief Indicates if feature scheme is enabled
     bool enabled;
+    /// @brief Amount of times a byte should be overwritten using a pre-determined pattern
     int rounds;
+    /// @brief A pattern of bytes to overwrite a byte with
     char * pattern;
+    /// @brief Length of pattern
     int length;
 } DataWipingScheme;
 

@@ -18,10 +18,15 @@
 /// @brief The context of a memory object and the security operations surrounding it.
 /// Tracks the security schemes to be used, the memory units containing the memory object, and the SecureHandle.
 typedef struct {
+    /// @brief The handle used for de-referencing the User Data Buffer (UDB) and internal structures
     SecureHandle secure_handle;
+    /// @brief The total size of the memory object
     size_t data_total_size;
+    /// @brief The security scheme to be employed for securing the memory object
     SecureObjectScheme * scheme;
+    /// @brief Contains the actual memory object in either one or more memory `unit(s)`
     MemoryUnit ** memory_units;
+    /// @brief The amount of memory units in this context
     int memory_unit_count;
 } SecureObjectContext;
 

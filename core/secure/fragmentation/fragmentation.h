@@ -17,13 +17,17 @@
 
 /// @brief Contains the results from `calculate_fragmentation`
 typedef struct {
+    /// @brief Size of each fragment except remainder
     int each_size;
+    /// @brief Size of the last remainder
     int remainder_size;
 } calculate_fragmentation_result;
 
 /// @brief Security sub-scheme for fragmenting memory objects.
 typedef struct {
+    /// @brief Indicates if feature scheme is enabled
     bool enabled;
+    /// @brief Amount of fragments to produce
     int amount;
 } FragmentationScheme;
 

@@ -16,7 +16,9 @@
 #include <stdlib.h>
 
 typedef struct {
-    unsigned char * address;
+    /// @brief Address of memory object unit
+    void * address;
+    /// @brief Length of data at `address`
     size_t length;
 } MemoryUnit;
 

@@ -23,6 +23,7 @@ typedef enum {
     CRITICAL,
     INTERNAL,
     PUBLIC,
+    /// @brief Used to indicate pre-existing grade
     _DEFAULT
 } Sensitivity;
 

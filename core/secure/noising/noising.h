@@ -16,5 +16,6 @@
 /// @brief Security sub-scheme for generating "noise" during input/output operations.
 /// Mitigation against side-channel attacks.
 typedef struct {
+    /// @brief Indicates if feature scheme is enabled
     bool enabled;
 } NoisingScheme;
