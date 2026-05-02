@@ -65,7 +65,7 @@ void sfp_free(SecureHandle secure_handle) {
     if(scheme->data_wiping.enabled) {
         for(int m = 0; m < context->memory_unit_count; m++) {
             MemoryUnit * unit = context->memory_units[m];
-            overwrite_data(unit->address, unit->length);
+            overwrite_data(unit->address, unit->length, scheme->sensitivity);
             free(unit->address);
         }
     }
