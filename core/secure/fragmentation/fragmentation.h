@@ -13,7 +13,7 @@
 
 #pragma once
 #include <stdlib.h>
-#include "../secure.h"
+#include <stdbool.h>
 
 /// @brief Contains the results from `calculate_fragmentation`
 typedef struct {
@@ -21,9 +21,17 @@ typedef struct {
     int remainder_size;
 } calculate_fragmentation_result;
 
-/// @brief Utility used for calculating the size of each fragment and the remainder
-/// @param size [in] The size of the memory object
+/// @brief Security sub-scheme for fragmenting memory objects.
+typedef struct {
+    bool enabled;
+    int amount;
+} FragmentationScheme;
+
+#include "../secure.h"
+
+/// @brief Utility used for calculating the total_size of each fragment and the remainder
+/// @param total_size [in] The size of the memory object
 /// @param amount [in] The amount of fragments (factor)
 /// @param size_incremental_difference [in] Cryptographical padding to the output
 /// @param result [out] The structure storing the result information
-void calculate_fragmentation(size_t size, int amount, int size_incremental_difference, calculate_fragmentation_result * result);
+void calculate_fragmentation(size_t total_size, int amount, int size_incremental_difference, calculate_fragmentation_result * result);

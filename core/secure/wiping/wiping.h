@@ -14,6 +14,16 @@
 #pragma once
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
+
+/// @brief Security sub-scheme for wiping data.
+typedef struct {
+    bool enabled;
+    int rounds;
+    char * pattern;
+    int length;
+} DataWipingScheme;
+
 #include "../secure.h"
 
 /// @brief Overwrites data using patterns and rounds according to grade
