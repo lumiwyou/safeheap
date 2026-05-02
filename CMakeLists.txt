@@ -1,16 +1,26 @@
 cmake_minimum_required(VERSION 3.31.6)
-project(safeheap_project)
-set(CMAKE_CXX_STANDARD 17)
-add_executable("${CMAKE_PROJECT_NAME}"
-	"tests/test.c"
-	"interface/allocate/allocate.c"
+project(safeheap_project C)
+
+# Set C standard
+set(CMAKE_C_STANDARD 17)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_BUILD_TYPE Debug)
+
+include_directories(${CMAKE_SOURCE_DIR})
+
+set(SAFEHEAP_SOURCES
+    core/memory/memory.c
+    core/secure/secure.c
+    core/secure/fragmentation/fragmentation.c
+    core/secure/object/object.c
+    core/secure/wiping/wiping.c
+    interface/allocate/allocate.c
 )
-target_include_directories("${CMAKE_PROJECT_NAME}" PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/")
-target_include_directories("${CMAKE_PROJECT_NAME}" PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/core")
-target_include_directories("${CMAKE_PROJECT_NAME}" PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/core/secure")
-target_include_directories("${CMAKE_PROJECT_NAME}" PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/core/secure/fragmentation")
-target_include_directories("${CMAKE_PROJECT_NAME}" PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/core/secure/object")
-target_include_directories("${CMAKE_PROJECT_NAME}" PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/core/secure/wiping")
-target_include_directories("${CMAKE_PROJECT_NAME}" PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/core/memory")
-target_include_directories("${CMAKE_PROJECT_NAME}" PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/interface")
-target_include_directories("${CMAKE_PROJECT_NAME}" PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/interface/allocate")
+
+add_library(safeheap STATIC ${SAFEHEAP_SOURCES})
+
+add_executable(test_safeheap tests/test.c)
+target_link_libraries(test_safeheap safeheap)
+
+enable_testing()
+add_test(NAME safeheap_tests COMMAND test_safeheap)
