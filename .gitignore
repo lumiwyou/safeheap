@@ -56,7 +56,6 @@ dkms.conf
 
 # MacOS
 .DS_Store
-.vscode
 
 # Cmake
 CMakeFiles/
