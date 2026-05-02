@@ -57,6 +57,7 @@ Data wiping is done through a iterative and often repeated overwrite of the data
 
 ## Architecture
 ![architecture](docs/Architecture.png "Architecture")
+
 The information flow goes both ways for both read/write operations. `The User Data Buffer (UDB)` is the bridging data buffer between the `Memory Object Data` and the `User / Variable`. The user utilizes the `interface` for interacting with the internal `secure object context(s)` referenced by the `secure handle`.
 
 ## Glossary
