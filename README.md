@@ -22,6 +22,12 @@ This library is in early-development and is NOT considered ready for use in prod
 #include <safeheap.h>
 ```
 
+### Set up documentation
+Simply run the following command and it will generate HTML and LaTeX documentation in the `build/doxygen` directory.
+```
+doxygen Doxyfile
+```
+
 ## Security Schemes
 The following schemes are employed to secure memory objects.
 - [Encryption](###Encryption)
