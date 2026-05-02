@@ -17,7 +17,7 @@ SecureHandle add_secure_object(Sensitivity grade, size_t size) {
     SecureObjectContext * new_context = malloc(sizeof(SecureObjectContext));
     new_context->data_total_size = size;
     new_context->secure_handle = malloc(new_context->data_total_size);
-    new_context->scheme_id = get_scheme_by_grade(grade, size)->id;
+    new_context->scheme_id = get_scheme_by_grade(grade)->id;
 
     // If there is a NULLED entry (from previous removal) then use that instead of creating a new one in table
     if((available_spot = find_empty_context()) != NULL) {
@@ -51,7 +51,7 @@ void update_secure_object(SecureHandle secure_handle, Sensitivity grade, size_t 
     
     if(grade != _DEFAULT) {
         SecureObjectScheme * new_scheme;
-        if((new_scheme = get_scheme_by_grade(grade, size))->id != secure_context->scheme_id) {
+        if((new_scheme = get_scheme_by_grade(grade))->id != secure_context->scheme_id) {
             secure_context->scheme_id = new_scheme->id;
             // TODO: Update entire memory units
             // ! ISSUE: this duty is reserved for interface function, conflicting.

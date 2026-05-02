@@ -81,4 +81,4 @@ SecureObjectScheme * get_scheme_by_identifier(SchemeIdentifier identifier);
 /// @param grade Grade to match against
 /// @param size (Optional) Size of the memory object
 /// @return Security scheme pointer
-SecureObjectScheme * get_scheme_by_grade(Sensitivity grade, size_t size);
+SecureObjectScheme * get_scheme_by_grade(Sensitivity grade);
