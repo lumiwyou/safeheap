@@ -56,6 +56,7 @@ SecureHandle sfp_calloc(int num, size_t size, Sensitivity grade) {
 
 SecureHandle sfp_realloc(SecureHandle secure_handle, size_t size) {
     update_secure_object(secure_handle, _DEFAULT, size);
+    return secure_handle;
 }
 
 void sfp_free(SecureHandle secure_handle) {

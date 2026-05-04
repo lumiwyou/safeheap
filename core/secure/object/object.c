@@ -9,6 +9,7 @@ SecureObjectContext * get_secure_object(SecureHandle secure_handle) {
             return secured_objects_table[a];
         }
     }
+    return NULL;
 }
 
 SecureHandle create_secure_object(Sensitivity grade, size_t size) {
@@ -54,4 +55,5 @@ SecureObjectContext ** find_empty_context(void) {
             return &secured_objects_table[c];
         }
     }
+    return NULL;
 }
