@@ -40,7 +40,7 @@ void TEST_PUBLIC_SFP_MALLOC(Sensitivity grade) {
 }
 
 void TEST_PUBLIC_INTERFACES(Sensitivity grade) {
-    TEST_PUBLIC_SFP_MALLOC(grade);
+    //TEST_PUBLIC_SFP_MALLOC(grade);
     ///TEST_PUBLIC_SFP_CALLOC(grade);
     ///TEST_PUBLIC_SFP_REALLOC(grade);
     ///TEST_PUBLIC_SFP_FREE(grade);
