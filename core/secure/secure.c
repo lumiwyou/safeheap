@@ -1,5 +1,6 @@
 #include "secure.h"
 
+// #14 @lumiwyou add a check to ensure not empty on compile
 SecureObjectScheme security_schemes[] = {
 };
 
